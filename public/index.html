@@ -6,7 +6,7 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6WQHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
@@ -14,37 +14,47 @@
   </head>
   <body>
     <h1 class="title">iChat 💬</h1>
-    <div class="main">
-      <div class="name">
+
+    <!-- Pantalla de inicio de sesión -->
+    <div id="login-screen" class="login-screen">
+      <h2>Iniciar sesión</h2>
+      <div class="name" style="margin: 12px 0;">
         <span><i class="far fa-user"></i></span>
         <input
           type="text"
-          id="name-input"
+          id="username"
           class="name-input"
-          value="anonymous"
+          placeholder="Ingresa tu nombre"
           maxlength="20"
+          autofocus
         />
+      </div>
+      <button id="login-btn" class="send-button" style="width:max-content;">
+        Entrar
+      </button>
+    </div>
+
+    <!-- Chat (oculto hasta iniciar sesión) -->
+    <div class="main" id="chat-screen" style="display:none;">
+      <div class="chat-header" style="display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom:8px;">
+        <div class="name" style="flex:1;">
+          <span><i class="far fa-user"></i></span>
+          <input
+            type="text"
+            id="name-input"
+            class="name-input"
+            value="anonymous"
+            maxlength="20"
+            readonly
+          />
+        </div>
+        <button id="logout-btn" class="send-button" style="background:#f44336;">
+          <i class="fas fa-sign-out-alt"></i> Salir
+        </button>
       </div>
 
       <ul class="message-container" id="message-container">
-        <!-- These li elements are only for reference, and therefore, they are commented out... -->
-        <!-- <li class="message-left">
-          <p class="message">
-            lorem impsun
-            <span>bluebird ● 26 July 10:40</span>
-          </p>
-        </li>
-
-        <li class="message-right">
-          <p class="message">
-            lorem impsun
-            <span>bluebird ● 26 July 10:40</span>
-          </p>
-        </li>
-
-        <li class="message-feedback">
-          <p class="feedback" id="feedback">✍️ killer is typing a message...</p>
-        </li> -->
+        <!-- Mensajes se inyectan aquí -->
       </ul>
 
       <form class="message-form" id="message-form">
@@ -53,6 +63,7 @@
           name="message"
           id="message-input"
           class="message-input"
+          placeholder="Escribe un mensaje..."
         />
         <div class="v-divider"></div>
         <button type="submit" class="send-button">
@@ -60,7 +71,8 @@
         </button>
       </form>
     </div>
-    <h3 class="clients-total" id="client-total">Total clients: 2</h3>
+
+    <h3 class="clients-total" id="client-total">Total clients: 0</h3>
 
     <script src="/socket.io/socket.io.js"></script>
     <script
