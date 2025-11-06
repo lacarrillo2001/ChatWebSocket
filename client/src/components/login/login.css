@@ -1,0 +1,80 @@
+/*
+ * NOTA: Este .card usa las variables globales 
+ * (--bg-primary, --border-color, --shadow-color) 
+ * que ya definimos en el CSS del Chat.
+ */
+.login.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espacio entre título, input, error y botón */
+  padding: 24px 28px;
+  
+  width: 100%;
+  max-width: 400px; /* Un ancho bueno para login */
+  
+  /* Esto asume que 'body' ya está centrando el contenido */
+  margin: auto; 
+}
+
+.login h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0 0 8px 0;
+}
+
+/* --- Estilos para Inputs (Reutilizable) --- */
+/*
+ * Puedes mover .input y .button a tu CSS principal 
+ * si quieres que se vean igual en toda la app.
+ */
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: var(--font-family); /* Hereda la fuente global */
+  
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
+  
+  border-radius: 6px;
+  box-sizing: border-box; /* Clave para que padding no afecte el ancho */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 3px var(--input-focus-shadow);
+}
+
+/* --- Texto de Error --- */
+.error-text {
+  font-size: 0.85rem;
+  color: var(--text-danger);
+  text-align: center;
+  margin: -8px 0; /* Reduce el espacio vertical cuando aparece */
+  min-height: 1.2em; /* Evita que el layout "salte" */
+}
+
+/* --- Botón de Login --- */
+/* * Esto sobreescribe el .button de "Salir" (rojo) 
+ * y lo hace azul (primario) solo dentro del .login
+ */
+.login .button {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  font-size: 1rem;
+  padding: 12px 16px;
+  width: 100%; /* Ocupa todo el ancho del card */
+}
+
+.login .button:hover {
+  filter: brightness(0.9);
+}

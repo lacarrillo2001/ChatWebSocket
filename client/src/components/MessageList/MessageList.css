@@ -1,0 +1,16 @@
+.messages {
+  /* 1. Reset de <ul> */
+  /* Quita los bullets (•) y el padding por defecto del navegador */
+  list-style-type: none;
+  margin: 0;
+  padding: 0; 
+
+  /* 2. Layout de Mensajes */
+  /* Apila los items (li) uno encima de otro */
+  display: flex;
+  flex-direction: column;
+
+  /* 3. Espaciado */
+  /* Un espacio vertical entre cada burbuja de chat */
+  gap: 8px; 
+}

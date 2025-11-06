@@ -15,6 +15,20 @@ const chatScreen = document.getElementById('chat-screen');
 const usernameInput = document.getElementById('username');
 const loginBtn = document.getElementById('login-btn');
 
+const msgContainer = document.getElementById('message-container');
+
+function isNearBottom(el, threshold = 80) {
+  return el.scrollHeight - el.clientHeight - el.scrollTop <= threshold;
+}
+function scrollToBottom(el) {
+  el.scrollTop = el.scrollHeight;
+}
+function afterAppendMessage() {
+  if (isNearBottom(msgContainer)) scrollToBottom(msgContainer);
+}
+
+
+
 
 // ===== Login opcional =====
 if (loginScreen && chatScreen && usernameInput && loginBtn) {

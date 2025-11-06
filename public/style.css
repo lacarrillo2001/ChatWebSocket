@@ -1,141 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
-* {
+/* 1) El body manda: ocupa el viewport y no deja que crezca la página */
+html, body {
+  height: 100%;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+}
+body {
+  height: 100vh;                /* clave: altura fija al viewport */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;             /* que nada “rompa” el alto total */
+}
+
+/* 2) Título arriba, contador abajo, el chat en medio */
+.title {
+  flex: 0 0 auto;
+  margin: 16px auto;
+}
+.clients-total {
+  flex: 0 0 auto;
+  margin: 8px auto 16px;
+}
+
+/* 3) El chat ocupa el espacio flexible entre título y footer */
+#chat-screen.main {
+  flex: 1 1 auto;               /* ocupa el resto */
+  min-height: 0;                /* ¡permite que los hijos hagan overflow! */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  /* quita cualquier height inline como 80vh si lo tenías */
+}
+
+/* 4) Header del chat fijo (no crece) */
+.chat-header {
+  flex: 0 0 auto;
+}
+
+/* 5) La lista de mensajes se queda con el scroll */
+.message-container {
+  flex: 1 1 auto;               /* ocupa todo el espacio libre */
+  min-height: 0;                 /* crucial para que el overflow funcione */
+  overflow-y: auto;              /* el scroll vive aquí */
+  list-style: none;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fff;
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  display: grid;
-  place-items: center;
-  background-color: #ebebeb;
-}
-
-.title {
-  margin: 20px 0;
-}
-
-.main {
-  border: 8px solid #dddddd;
-  border-radius: 24px;
-  overflow: hidden;
-}
-
-.name {
-  display: flex;
-  font-size: 32px;
-  font-weight: 700;
-  padding: 8px 16px;
-  color: #7e7e7e;
-  background-color: #ebebeb;
-}
-
-.name > span {
-  color: #bbb;
-}
-
-.name-input {
-  font-size: 24px;
-  font-weight: 700;
-  color: #7e7e7e;
-  flex-grow: 1;
-  border: none;
-  margin: 0px 12px;
-  outline: none;
-  background-color: #ebebeb;
-}
-
-.message-container {
-  display: flex;
-  flex-direction: column;
-  background-color: #f6f6f6;
-  width: 400px;
-  height: 600px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.message-left,
-.message-right {
-  list-style: none;
-  padding: 8px 12px;
-  margin: 12px;
-  max-width: 250px;
-  font-size: 18px;
-  word-wrap: break-word;
-}
-
-.message-left {
-  border-radius: 20px 20px 20px 0px;
-  align-self: flex-start;
-  background-color: #fff;
-  box-shadow: -2px 2px 4px #dcdcdc;
-}
-
-.message-right {
-  border-radius: 20px 20px 0px 20px;
-  align-self: flex-end;
-  background-color: #2d2d2d;
-  box-shadow: 2px 2px 4px #dcdcdc;
-  color: #f6f6f6;
-}
-
-.message-left > p > span,
-.message-right > p > span {
-  display: block;
-  font-style: italic;
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-.feedback {
-  font-style: italic;
-  font-size: 14px;
-  padding: 0px 16px 16px 16px;
-  color: #2d2d2d;
-  text-align: center;
-}
-
+/* 6) El formulario abajo fijo (no crece) */
 .message-form {
+  flex: 0 0 auto;
   display: flex;
-  justify-content: space-between;
-  width: 400px;
+  align-items: center;
+  gap: 8px;
 }
-
 .message-input {
-  flex-grow: 1;
-  height: 48px;
-  font-size: 16px;
-  border: none;
-  outline: none;
-  padding: 0 12px;
-  background-color: #fff;
+  flex: 1 1 auto;
 }
 
-.send-button {
-  height: 48px;
-  font-size: 16px;
-  border: none;
-  padding: 0px 20px;
-  outline: none;
-  background-color: #fff;
-  cursor: pointer;
+/* (Opcional) Scrollbar discreto */
+.message-container::-webkit-scrollbar { width: 8px; }
+.message-container::-webkit-scrollbar-thumb {
+  border-radius: 8px; background: #c7c7c7;
 }
+.message-container::-webkit-scrollbar-thumb:hover { background: #b0b0b0; }
 
-.v-divider {
-  height: 48px;
-  width: 2px;
-  background-color: #f6f6f6;
-}
-
-.clients-total {
-  margin: 20px 0;
-  color: #7e7e7e;
+/* 7) Pantalla de login: ocupa viewport y permite su propio scroll si hace falta */
+#login-screen {
+  min-height: 100vh;
+  display: none;                 /* tu JS la muestra/oculta */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 16px;
 }
