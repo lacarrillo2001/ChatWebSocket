@@ -4,7 +4,7 @@
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "cross-env HOST=0.0.0.0 PORT=4000 node app.js",
     "dev": "nodemon --watch app.js --ignore messages.json --ignore data/ app.js"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "cross-env": "^10.1.0",
+    "nodemon": "^3.1.10"
   }
 }

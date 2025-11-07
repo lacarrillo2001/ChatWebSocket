@@ -6,6 +6,7 @@ const fs = require('fs');
 
 const app = express();
 const server = http.createServer(app);
+const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 4000;
 
 app.get('/health', (_req, res) => res.json({ ok: true }));
@@ -169,6 +170,6 @@ setInterval(() => {
 }, 30 * 60 * 1000);
 
 // -------------------- Arrancar servidor --------------------
-server.listen(PORT, () => {
-  console.log(`💬 WebSocket server corriendo en http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`💬 WebSocket server en http://${HOST}:${PORT}`);
 });
