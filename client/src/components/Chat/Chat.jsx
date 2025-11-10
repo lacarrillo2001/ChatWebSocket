@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useChatSocket } from '../../hooks/useChatSocket'
-import MessageList from '../MessageList/MessageList'
+import MessageList from '../MessageList'
 import MessageInput from '../MessageInput/MessageInput'
 
 export default function Chat({ username, onLogout }) {

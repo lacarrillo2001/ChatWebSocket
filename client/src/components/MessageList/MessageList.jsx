@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import MessageItem from '../MessgeItem/MessageItem.jsx'
+import MessageItem from '../MessageItem/MessageItem'
 
 const MessageList = forwardRef(function MessageList({ messages, username }, ref) {
   return (
