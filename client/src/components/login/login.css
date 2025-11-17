@@ -1,0 +1,132 @@
+<<<<<<< HEAD
+=======
+/* ==================================== */
+/* 🔐 LOGIN CENTRADO (Corrección total) 🔐 */
+/* ==================================== */
+
+#root.login-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* garantiza altura visible exacta */
+  width: 100%;
+  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  overflow: hidden; /* evita desplazamientos verticales */
+}
+
+.login {
+  width: 100%;
+  max-width: 380px; /* tamaño más equilibrado */
+  margin: 0;
+  padding: 32px 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px var(--shadow);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+/* --- Título --- */
+.login h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+/* --- Input --- */
+.login .input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(30, 41, 59, 0.4);
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.login .input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  background: rgba(30, 41, 59, 0.6);
+}
+
+/* --- Botón --- */
+.login .button {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px -1px rgba(59, 130, 246, 0.3);
+}
+
+.login .button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.login .button:active {
+  transform: translateY(0);
+}
+
+/* --- Texto de error --- */
+.login .error-text {
+  color: var(--danger);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* --- Animación sutil --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Móviles pequeños --- */
+@media (max-width: 480px) {
+  .login {
+    max-width: 90%;
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+}
+
+/* --- Animaciones --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Accesibilidad --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+>>>>>>> jsalomia
